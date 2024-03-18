@@ -1,6 +1,6 @@
 async function searchStudent() {
     const name = document.getElementById("name").value;
-    const response = await fetch("students.json");
+    const response = await fetch("../json/students.json");
     const data = await response.json();
     const matchingStudents = data.filter(student => student.name === name);
     const resultDiv = document.getElementById("result");
@@ -16,12 +16,12 @@ async function addStudent() {
     const newAge = document.getElementById("newAge").value;
     const newGender = document.getElementById("newGender").value;
     const newGrade = document.getElementById("newGrade").value;
-    const response = await fetch("students.json");
+    const response = await fetch("../json/students.json");
     const data = await response.json();
     const newStudent = {name: newName, age: newAge, gender: newGender, grade: newGrade};
     data.push(newStudent);
     const updatedContent = JSON.stringify(data, null, 2);
-    const updateResponse = await fetch("students.json", {
+    const updateResponse = await fetch("../json/students.json", {
         method: "PUT",
         body: updatedContent
     });
